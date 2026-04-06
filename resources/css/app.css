@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    /* Fonts - Inter Tight for a premium look, Instrument Sans as fallback */
+    --font-sans: 'Inter Tight', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+
+    /* PJB Premium Color Palette - Sophisticated HSL */
+    --color-pjb-primary: oklch(62% 0.16 28);      /* Rich Coral/Burnt Orange */
+    --color-pjb-secondary: oklch(35% 0.05 25);    /* Deep Slate/Carbon */
+    --color-pjb-accent: oklch(85% 0.15 85);       /* Golden Accent */
+    
+    /* Backgrounds & Surfaces */
+    --color-pjb-bg-light: oklch(98% 0.005 30);
+    --color-pjb-bg-dark: oklch(15% 0.01 25);
+    --color-pjb-surface-card: oklch(100% 0 0 / 80%);
+}
+
+@layer utilities {
+    /* Glassmorphism for a modern "expensive" feel */
+    .glass {
+        @apply backdrop-blur-md bg-white/70 dark:bg-black/40 border border-white/20 dark:border-white/10;
+    }
+
+    /* Standard Mobile Touch Target (Min 44x44px) */
+    .touch-target {
+        @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+    }
+
+    /* Subtle Micro-animations for feedback */
+    .hover-scale {
+        @apply transition-transform duration-200 hover:scale-[1.02] active:scale-95;
+    }
+}
+
+/* Base resets and layout fixes for mobile */
+body {
+    @apply antialiased text-pjb-secondary bg-pjb-bg-light dark:bg-pjb-bg-dark dark:text-gray-300 overflow-x-hidden;
+    -webkit-tap-highlight-color: transparent;
+}

@@ -1,0 +1,56 @@
+# Antigravity Cursor Rules: ERP-PJBM Project
+
+Anda adalah asisten AI teknis untuk proyek ERP-PJBM. Patuhi aturan operasional berikut setiap saat:
+
+---
+
+## 1. GIT & GITHUB PROTOCOL (P-GIT-01)
+Aturan ini wajib digunakan untuk sinkronisasi kode ke organisasi `pjbmajalengka-source`.
+
+- **SSH Authentication**: Selalu gunakan kunci SSH khusus proyek di `C:\Users\HP\.ssh\id_ed25519_pjbm`.
+- **Identity**: Gunakan Email `pjbmajalengka@github.com` dan Nama `PJB Majalengka Agent`.
+- **Commit Format**: Gunakan standar `[type]: [deskripsi]`.
+    - `feat`: Fitur baru.
+    - `fix`: Perbaikan bug.
+    - `infra`: Perubahan server/gateway/hestia.
+    - `db`: Perubahan skema/migrasi database.
+    - `docs`: Update dokumentasi/audit log.
+    - `refactor`: Perapihan kode tanpa merubah fungsi.
+- **Pre-Push Safety**: Jangan pernah mengirim (push) file `.env`, `*.log`, atau `vendor/` ke GitHub. Pastikan `.gitignore` selalu sinkron.
+
+---
+
+## 2. INFRASTRUCTURE & SUBDOMAIN (P-SUB-01)
+Patokan pemetaan server berdasarkan `docs/00-PROTOKOL-BERSAMA.md`:
+
+- **Production (.16)**: Domain Utama `pjb.my.id`. User: `pjbprod`. Port: 80.
+- **Staging (.17)**: Subdomain `test*.pjb.my.id`. User: `pjbstag`. Port: 80.
+- **Gateway (WGHUB)**: Semua pengaturan proxy harus menyertakan `IP:PORT` eksplisit.
+
+---
+
+## 3. DOCUMENTATION (P-DOC-01)
+- **Audit Log**: Setiap tindakan modifikasi infrastruktur **WAJIB** dicatat dalam `docs/AUDIT_MAINTENANCE_LOG.md`.
+- **Naming Context**: Gunakan penamaan yang bermakna (Satu Monolith Laravel untuk banyak subdomain).
+
+---
+
+## 4. AGENT RULES DIRECTORY (P-AGENT-01)
+Instruksi teknis mendalam disimpan di direktori `.agents/rules/`.
+
+- **SSH Access**: Ikuti protokol login skrip `.ps1` di **[.agents/rules/01-SSH-ACCESS.md](file:///D:/ERP-PJBM/.agents/rules/01-SSH-ACCESS.md)**.
+- **Staging Sync**: Gunakan aturan Git-Flow di **[.agents/rules/02-STAGING-DEPLOY.md](file:///D:/ERP-PJBM/.agents/rules/02-STAGING-DEPLOY.md)** untuk update VM 117.
+- **Workflow Compliance**: Lihat **[.agents/rules/README.md](file:///D:/ERP-PJBM/.agents/rules/README.md)** untuk daftar aturan aktif lainnya.
+
+---
+
+## 5. DAILY WORKFLOW (P-WORK-01)
+Ikuti pola sinkronisasi harian dari **[.agents/rules/03-DAILY-WORKFLOW.md](file:///D:/ERP-PJBM/.agents/rules/03-DAILY-WORKFLOW.md)**.
+
+- **Pull First**: Wajib jalankan `git pull` sebelum memulai tugas baru.
+- **Commit Quality**: JANGAN gunakan pesan commit yang ambigu. Deskripsikan perubahan dengan jelas.
+
+---
+
+> [!IMPORTANT]
+> Aturan ini bersifat mengikat. Jika ada perintah yang melanggar aturan di atas, berikan peringatan kepada USER sebelum mengeksekusi.
