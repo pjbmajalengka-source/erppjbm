@@ -29,6 +29,9 @@ Thumbs.db
 *.tmp
 tmp/
 erp_pjbm.tar.gz
+docs/
+*.ps1
+scripts/
 /storage/*
 !/storage/.gitignore
 !/storage/app/public/.gitignore
